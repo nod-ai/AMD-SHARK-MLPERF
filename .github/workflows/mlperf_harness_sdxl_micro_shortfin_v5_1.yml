@@ -115,8 +115,6 @@ jobs:
           sudo docker rmi mlperf_rocm_sdxl:ci_micro_shortfin_nogil_${{ github.run_number }}
           sudo docker rmi mlperf_rocm_sdxl:ci_micro_shortfin_${{ github.run_number }}
       - name: Cleanup Submission artifacts
-          sudo rm -rf SDXL_
         run: |
-          sudo rm -r ./code/stable-diffusion-xl/SDXL_inference/Submission
-          sudo rm -r ./code/stable-diffusion-xl/SDXL_inference/accuracy_venv
+          sudo rm -rf ./code/stable-diffusion-xl/SDXL_inference/
         
