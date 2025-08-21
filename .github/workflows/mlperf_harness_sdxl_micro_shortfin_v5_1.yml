@@ -78,7 +78,7 @@ jobs:
           sudo docker exec ci_container_micro_shortfin_${{ github.run_number }} ./run_scenario_server_MI325x_cpx.sh
       - name: Run Offline
         run: |
-          sudo docker --env PYTHON_GIL=0 exec ci_container_micro_shortfin_nogil_${{ github.run_number }} ./run_scenario_offline_MI325x_cpx_c2000.sh
+          sudo docker exec --env PYTHON_GIL=0 ci_container_micro_shortfin_nogil_${{ github.run_number }} ./run_scenario_offline_MI325x_cpx_c2000.sh
       - name: "Upload accuracy artifact (offline)"
         uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
         with:
