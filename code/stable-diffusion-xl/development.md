@@ -105,18 +105,19 @@ Best results are achieved through use of free-threaded python (3.13t) where GIL 
 
 ### NOTE (GIL-FREE):
 > The precompile command and the run_scenario.sh should be executed in separate docker containers for best performance. Once you have finished precompiling, the artifacts will be saved to your disk, and picked up in the python3.13t docker container.
+> NOTE: Accuracy only -- we omit the tuning spec here.
 
 ``` bash
 # MI325x
 
 # Compile the SHARK engines (Offline)
-IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_and_matmul_spec_gfx942_MI325_bs32_mod.mlir --model_json sdxl_config_fp8_sched_unet_bs32.json
+IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec '' --model_json sdxl_config_fp8_sched_unet_bs32.json
 # Run the offline scenario.
 
 PYTHON_GIL=0 ./run_scenario_offline_MI325x_cpx.sh
 
 # Compile the SHARK engines (Server)
-IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_and_matmul_spec_gfx942_MI325_mod.mlir --model_json sdxl_config_fp8_sched_unet_bs2.json
+IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec '' --model_json sdxl_config_fp8_sched_unet_bs2.json
 # Run the server scenario.
 
 PYTHON_GIL=0 ./run_scenario_server_MI325x_cpx.sh
