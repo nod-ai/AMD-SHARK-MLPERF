@@ -2,7 +2,6 @@ import subprocess
 import logging
 import itertools
 import logging
-from numa import schedule, memory, info
 
 
 DEVICE_INDEX_STR = "Device Index"
@@ -108,6 +107,7 @@ def get_gpu_to_cpu_mapping():
 
 
 def set_affinity_by_device(device_id):
+    from numa import schedule, memory, info
     gpu_to_cpu_map = get_gpu_to_cpu_mapping()
     nodes = gpu_to_cpu_map[device_id]
 

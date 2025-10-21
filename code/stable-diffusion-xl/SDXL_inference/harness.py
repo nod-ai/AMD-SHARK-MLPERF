@@ -383,7 +383,7 @@ def mlperf(args):
         use_response_pipes=False,
         send_latents_once=False,
         mock_timeout=None,
-        enable_numa=True,
+        enable_numa=False,
         workers_per_device=args.workers_per_device,
         fibers_per_device=args.fibers_per_device,
         isolation="per_fiber",
