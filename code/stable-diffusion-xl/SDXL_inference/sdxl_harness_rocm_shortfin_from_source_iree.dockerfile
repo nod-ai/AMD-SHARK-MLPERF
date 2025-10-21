@@ -40,7 +40,7 @@ SHELL ["/bin/bash", "-c"]
 ARG APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE=1
 
 # Checkout and build IREE
-RUN git clone https://github.com/efric/iree.git -b reduction-singlesubgroup\
+RUN git clone https://github.com/efric/iree.git -b it-hybrid\
     && cd iree \
     && git submodule update --init
 
@@ -81,12 +81,12 @@ RUN git clone https://github.com/ROCm/rocmProfileData.git \
 ENV HF_HOME=/models/huggingface/
 
 # enable bandwith test and numa
-RUN git clone https://github.com/ROCm/rocm_bandwidth_test --depth 1 rocm_bandwidth_test \
-  && cd rocm_bandwidth_test \
-  && mkdir build && cd build \
-  && cmake -DCMAKE_MODULE_PATH="/rocm_bandwidth_test/cmake_modules" -DCMAKE_PREFIX_PATH="/opt/rocm/" .. \
-  && make -j && make install \
-  && python3.11 -m pip install py-libnuma
+#RUN git clone https://github.com/ROCm/rocm_bandwidth_test --depth 1 rocm_bandwidth_test \
+#  && cd rocm_bandwidth_test \
+#  && mkdir build && cd build \
+#  && cmake -DCMAKE_MODULE_PATH="/rocm_bandwidth_test/cmake_modules" -DCMAKE_PREFIX_PATH="/opt/rocm/" .. \
+#  && make -j && make install \
+#  && python3.11 -m pip install py-libnuma
 
 # copy the harness code to the docker image
 COPY SDXL_inference /mlperf/harness

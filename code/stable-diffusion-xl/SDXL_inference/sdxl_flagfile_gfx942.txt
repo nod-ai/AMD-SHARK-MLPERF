@@ -13,7 +13,7 @@ all
 --iree-opt-data-tiling=0
 --iree-hal-memoization=1
 --iree-opt-strip-assertions
---iree-codegen-llvmgpu-early-tile-and-fuse-matmul=1
+--iree-codegen-llvmgpu-use-tile-and-fuse-matmul=1
 --iree-stream-resource-memory-model=discrete
 --iree-vm-target-truncate-unsupported-floats
 clip
