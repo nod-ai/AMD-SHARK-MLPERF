@@ -59,14 +59,14 @@ fi
 
 if [ -e "${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/scheduled_unet/diffusion_pytorch_model.fp16.safetensors" ]
 then
-    echo "unet already renamed to match shark expected path"
+    echo "unet already renamed to match amdshark expected path"
 else
     # Note: we need this for scheduled_unet
     ln -s ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/unet/diffusion_pytorch_model.safetensors \
           ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/diffusion_pytorch_model.fp16.safetensors
     ln -s ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/unet/config.json \
           ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/config.json
-    echo "Renamed unet to match shark expected path"
+    echo "Renamed unet to match amdshark expected path"
 fi
 
 md5sum ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/diffusion_pytorch_model.fp16.safetensors | grep "edfa956683fb6121f717d095bf647f53"
@@ -77,11 +77,11 @@ fi
 
 if [ -e "${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/vae/diffusion_pytorch_model.fp16.safetensors" ]
 then
-    echo "vae already renamed to match shark expected path"
+    echo "vae already renamed to match amdshark expected path"
 else
     ln -s ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/vae/diffusion_pytorch_model.safetensors \
           ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/vae/diffusion_pytorch_model.fp16.safetensors
-    echo "Renamed vae to match shark expected path"
+    echo "Renamed vae to match amdshark expected path"
 fi
 
 md5sum ${MODEL_DIR}/SDXL/official_pytorch/fp16/stable_diffusion_fp16/checkpoint_pipe/vae/diffusion_pytorch_model.fp16.safetensors | grep "25fe90074af9a0fe36d4a713ad5a3a29"

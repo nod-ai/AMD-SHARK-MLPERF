@@ -248,7 +248,7 @@ def get_args():
     )
 
     parser.add_argument(
-        "--shark_engine",
+        "--amd_shark_engine",
         choices=["iree_python_api", "micro_shortfin", "shortfin"],
         default="iree_python_api",
     )

@@ -89,7 +89,7 @@ class SampleRequest:
         negative_prompt_tokens_clip1,
         negative_prompt_tokens_clip2,
         init_noise_latent,
-        shark_engine,
+        amd_shark_engine,
     ):
         self.sample_ids = sample_ids
         self.sample_indices = sample_indices
@@ -98,7 +98,7 @@ class SampleRequest:
         self.negative_prompt_tokens_clip1 = negative_prompt_tokens_clip1
         self.negative_prompt_tokens_clip2 = negative_prompt_tokens_clip2
         self.init_noise_latent = init_noise_latent
-        self.shark_engine = shark_engine
+        self.amd_shark_engine = amd_shark_engine
 
     @staticmethod
     def create(samples, dataset, skip_latents=False, gpu_batch_size=1):
@@ -127,7 +127,7 @@ class SampleRequest:
                 sample_indices, : CONFIG.MAX_PROMPT_LENGTH
             ],
             init_noise_latent=None if skip_latents else dataset.init_noise_latent,
-            shark_engine=None,
+            amd_shark_engine=None,
         )
 
     def __len__(self):

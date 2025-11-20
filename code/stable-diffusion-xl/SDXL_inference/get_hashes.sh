@@ -17,8 +17,8 @@ cd /mlperf/inference
 echo "mlcommons/inference $(git rev-parse --short HEAD)" > /mlperf/harness/hashes.txt
 cd /iree
 echo "iree $(git rev-parse --short HEAD)" >> /mlperf/harness/hashes.txt
-cd /SHARK-ModelDev
-echo "SHARK-ModelDev $(git rev-parse --short HEAD)" >> /mlperf/harness/hashes.txt
+cd /AMD-SHARK-ModelDev
+echo "AMD-SHARK-ModelDev $(git rev-parse --short HEAD)" >> /mlperf/harness/hashes.txt
 cd /rocmProfileData
 echo "rocmProfileData $(git rev-parse --short HEAD)" >> /mlperf/harness/hashes.txt
 cd /rocm_bandwidth_test

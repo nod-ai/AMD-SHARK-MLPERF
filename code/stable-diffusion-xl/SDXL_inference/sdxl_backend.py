@@ -38,7 +38,7 @@ from shortfin_apps.sd.python_pipe import *
 from shortfin_apps.sd.components.config_struct import ModelParams
 
 
-from shark_micro_shortfin_process_samples import SharkMicroShortfinProcessSamples
+from amdshark_micro_shortfin_process_samples import AMDSharkMicroShortfinProcessSamples
 
 
 class SDXLShortfinService:
@@ -142,7 +142,7 @@ class SDXLShortfinService:
                     self.response_pipes.append(JoinableQueue())
 
                 # TODO: Refactor to nicer solution
-                implementation = SharkMicroShortfinProcessSamples
+                implementation = AMDSharkMicroShortfinProcessSamples
                 if mock_timeout is not None:
                     implementation = MockProcessSamples
                     import mock_process_samples
@@ -159,7 +159,7 @@ class SDXLShortfinService:
                     gpu_batch_size=self.gpu_batch_size,
                     verbose=self.verbose,
                     enable_numa=enable_numa,
-                    implementation=SharkMicroShortfinProcessSamples,
+                    implementation=AMDSharkMicroShortfinProcessSamples,
                     skip_warmup=skip_warmup if not debug else True,
                     init_noise_latent=dataset.init_noise_latent,
                     vmfbs=vmfbs,
@@ -379,13 +379,13 @@ class SDXLShortfinService:
         from PIL import Image
         import os
 
-        os.makedirs("harness_result_shark", exist_ok=True)
+        os.makedirs("harness_result_amdshark", exist_ok=True)
         for idx, sample_index in enumerate(response.sample_indices):
             Image.fromarray(response.generated_images[idx]).save(
-                f"harness_result_shark/response_{sample_index}.jpg"
+                f"harness_result_amdshark/response_{sample_index}.jpg"
             )
             self.verbose_log(
-                f"Image saved to harness_result_shark/response_{sample_index}.jpg"
+                f"Image saved to harness_result_amdshark/response_{sample_index}.jpg"
             )
 
     @rpd_trace()

@@ -25,7 +25,7 @@
 FROM rocm/dev-ubuntu-22.04:6.1.2
 
 # ######################################################
-# # Install MLPerf+Shark reference implementation
+# # Install MLPerf+AMD-Shark reference implementation
 # ######################################################
 ENV DEBIAN_FRONTEND=noninteractive
 
