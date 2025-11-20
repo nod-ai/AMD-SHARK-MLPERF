@@ -90,7 +90,7 @@ class Runner(sf.Process):
         return exec_process.exec_request.image_array
 
 
-class SharkMicroShortfinProcessSamples(BaseProcessSamples):
+class AMDSharkMicroShortfinProcessSamples(BaseProcessSamples):
 
     def __init__(self, service, init_noise_latent):
         self.service = None
@@ -223,7 +223,7 @@ class SharkMicroShortfinProcessSamples(BaseProcessSamples):
                 :batch_size, : CONFIG.MAX_PROMPT_LENGTH
             ],
             init_noise_latent=self.init_noise_latent,
-            shark_engine=None,
+            amd_shark_engine=None,
         )
 
         data = gen_input_ids(dummy_request, batch_size, self)

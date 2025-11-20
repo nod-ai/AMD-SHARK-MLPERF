@@ -47,7 +47,7 @@ flagfile="$script_dir/$flag_file"
 if [[ -n "$td_spec" ]]; then
     td_spec="$script_dir/$td_spec"
 fi
-shortfin_dir="/shark-ai/shortfin/python/shortfin_apps/sd"
+shortfin_dir="/amdshark-ai/shortfin/python/shortfin_apps/sd"
 export IREE_BUILD_MP_CONTEXT="fork"
 
 # Modify JSON batch sizes

@@ -1,7 +1,7 @@
 FROM rocm/dev-ubuntu-22.04:6.1.2
 
 # ######################################################
-# # Install MLPerf+Shark reference implementation
+# # Install MLPerf+AMD-Shark reference implementation
 # ######################################################
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -26,8 +26,8 @@ RUN mkdir /mlperf/ && cd /mlperf && \
     mkdir -p /mlperf/harness/ && \
     CFLAGS="-std=c++14" python3.11 setup.py install
 
-RUN mkdir -p /mlperf/shark_reference/ && cp -r /mlperf/inference/text_to_image/* /mlperf/shark_reference/ && cp /mlperf/inference/mlperf.conf /mlperf/shark_reference/
-RUN cd /mlperf/shark_reference/ && python3.11 -m pip install --no-cache-dir -r requirements.txt
+RUN mkdir -p /mlperf/amdshark_reference/ && cp -r /mlperf/inference/text_to_image/* /mlperf/amdshark_reference/ && cp /mlperf/inference/mlperf.conf /mlperf/amdshark_reference/
+RUN cd /mlperf/amdshark_reference/ && python3.11 -m pip install --no-cache-dir -r requirements.txt
 RUN mkdir -p /mlperf/quant_sdxl/
 COPY ./quant_sdxl/* /mlperf/quant_sdxl/
 
@@ -64,17 +64,17 @@ ENV PATH=/iree/build-release/tools:$PATH
 ENV PYTHONPATH=/iree/build-release/runtime/bindings/python:/iree/build-release/compiler/bindings/python
 
 ######################################################
-# Install shark-ai
+# Install amdshark-ai
 ######################################################
 
-RUN git clone https://github.com/nod-ai/shark-ai.git -b shared/mlperf-v5.0-sdxl \
-  && cd shark-ai \
+RUN git clone https://github.com/nod-ai/amdshark-ai.git -b shared/mlperf-v5.0-sdxl \
+  && cd amdshark-ai \
   && python3.11 -m pip uninstall torch torchvision torchaudio -y \
   && python3.11 -m pip install https://download.pytorch.org/whl/nightly/pytorch_triton_rocm-3.0.0%2B21eae954ef-cp311-cp311-linux_x86_64.whl \
   && python3.11 -m pip install https://download.pytorch.org/whl/nightly/rocm6.1/torch-2.5.0.dev20240710%2Brocm6.1-cp311-cp311-linux_x86_64.whl \
   && python3.11 -m pip install https://download.pytorch.org/whl/nightly/rocm6.1/torchvision-0.20.0.dev20240711%2Brocm6.1-cp311-cp311-linux_x86_64.whl \
   && python3.11 -m pip install https://download.pytorch.org/whl/nightly/rocm6.1/torchaudio-2.4.0.dev20240711%2Brocm6.1-cp311-cp311-linux_x86_64.whl \
-  && python3.11 -m pip install -r requirements.txt -r requirements-iree-pinned.txt -e sharktank/ -e shortfin/ \
+  && python3.11 -m pip install -r requirements.txt -r requirements-iree-pinned.txt -e amdsharktank/ -e shortfin/ \
   && pip uninstall iree-base-compiler iree-base-runtime -y
 
 # enable RPD

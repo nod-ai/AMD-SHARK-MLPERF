@@ -43,7 +43,7 @@ NOTE: `qps` can also be used to increase the sample count (mentioned above); thi
 
 ### saving images
 
-In debugging, the user can use the `--save_images 1` to save the generated images into `harness_result_shark`
+In debugging, the user can use the `--save_images 1` to save the generated images into `harness_result_amdshark`
 
 ### detailed_logdir_name
 
@@ -52,7 +52,7 @@ This can be disabled with `--detailed_logdir_name 0`.
 
 ### mocking
 
-There is a way to skip SHARK entirely and test harness functionality only. With `--mock_timeout_ms <ms>`, the inference will wait for the specified amount of time, and return random data.
+There is a way to skip AMD-SHARK entirely and test harness functionality only. With `--mock_timeout_ms <ms>`, the inference will wait for the specified amount of time, and return random data.
 
 ### skip warmup
 
