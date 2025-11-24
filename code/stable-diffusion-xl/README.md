@@ -104,7 +104,7 @@ python3.11 process_quant.py
 
 ## Reproduce Results
 Run the commands below in an inference container to reproduce full submission results.
-Each submission run command is preceded by a specific precompilation command. If you encounter issues with the precompilation, please file an issue at [shark-ai/issues](https://github.com/nod-ai/shark-ai/issues)
+Each submission run command is preceded by a specific precompilation command. If you encounter issues with the precompilation, please file an issue at [shark-ai/issues](https://github.com/nod-ai/amd-shark-ai/issues)
 The commands will execute performance, accuracy, and compliance tests for Offline and Server scenarios.
 
 NOTE: additional run commands and profiling options are described in [SDXL Inference](./SDXL_inference/README.md) documentation.
