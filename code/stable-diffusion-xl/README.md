@@ -104,19 +104,19 @@ python3.11 process_quant.py
 
 ## Reproduce Results
 Run the commands below in an inference container to reproduce full submission results.
-Each submission run command is preceded by a specific precompilation command. If you encounter issues with the precompilation, please file an issue at [shark-ai/issues](https://github.com/nod-ai/amd-shark-ai/issues)
+Each submission run command is preceded by a specific precompilation command. If you encounter issues with the precompilation, please file an issue at [amd-shark-ai/issues](https://github.com/nod-ai/amd-shark-ai/issues)
 The commands will execute performance, accuracy, and compliance tests for Offline and Server scenarios.
 
 NOTE: additional run commands and profiling options are described in [SDXL Inference](./SDXL_inference/README.md) documentation.
 ``` bash
 # MI300x
 
-# Compile the SHARK engines (Offline)
+# Compile the AMD-SHARK engines (Offline)
 IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_and_matmul_spec_gfx942_MI325.mlir --model_json sdxl_config_fp8_sched_unet_bs2.json
 # Run the offline scenario.
 ./run_scenario_offline_MI300x_cpx.sh
 
-# Compile the SHARK engines (Server)
+# Compile the AMD-SHARK engines (Server)
 IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_and_matmul_spec_gfx942_MI325.mlir --model_json sdxl_config_fp8_sched_unet_bs1.json
 # Run the server scenario.
 ./run_scenario_server_MI300x_cpx.sh
@@ -124,12 +124,12 @@ IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_
 ``` bash
 # MI325x
 
-# Compile the SHARK engines (Offline)
+# Compile the AMD-SHARK engines (Offline)
 IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_and_matmul_spec_gfx942_MI325.mlir --model_json sdxl_config_fp8_sched_unet_bs16.json
 # Run the offline scenario.
 ./run_scenario_offline_MI325x_cpx.sh
 
-# Compile the SHARK engines (Server)
+# Compile the AMD-SHARK engines (Server)
 IREE_BUILD_MP_CONTEXT="fork" ./precompile_model_shortfin.sh --td_spec attention_and_matmul_spec_gfx942_MI325.mlir --model_json sdxl_config_fp8_sched_unet_bs2.json
 # Run the server scenario.
 ./run_scenario_server_MI325x_cpx.sh
